@@ -82,10 +82,10 @@ const ContactPage = () => {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Our Locations</h3>
                   <p className="text-gray-300 leading-relaxed">
-                    Colombo 7, Maitland Crescent<br />
-                    Colombo 2, Moors Sports Club<br />
-                    Colombo 2, World Trade Center<br />
-                    Ja-ela
+                    Satara<br />
+                    Satara<br />
+                    Satara<br />
+                    Satara
                   </p>
                 </div>
               </div>
@@ -100,10 +100,10 @@ const ContactPage = () => {
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Phone Numbers</h3>
                   <div className="text-gray-300 space-y-2">
-                    <p><span className="font-medium">Colombo 7:</span> 011-269-5331 | 077-834-5678</p>
-                    <p><span className="font-medium">Moors Sport Club:</span> 011-212-1755 | 075-711-9033</p>
-                    <p><span className="font-medium">World Trade Center:</span> 011-233-8842 | 077-840-5889</p>
-                    <p><span className="font-medium">Ja-ela:</span> 011-222-9747 | 077-834-5678</p>
+                    <p><span className="font-medium">Satara:</span> 011-269-5331 | 077-834-5678</p>
+                    <p><span className="font-medium">Satara club</span> 011-212-1755 | 075-711-9033</p>
+                    <p><span className="font-medium">Powai naka</span> 011-233-8842 | 077-840-5889</p>
+                    <p><span className="font-medium">Satara</span> 011-222-9747 | 077-834-5678</p>
                   </div>
                 </div>
               </div>

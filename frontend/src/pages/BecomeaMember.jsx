@@ -28,17 +28,17 @@ function BecomeaMember() {
   const plans = [
     {
       title: "Class drop-in",
-      price: "$39.0",
+      price: "3900",
       features: ["Free riding", "Unlimited equipments", "Personal trainer", "Weight losing classes", "Month to month", "No time restriction"],
     },
     {
       title: "12 Month unlimited",
-      price: "$99.0",
+      price: "9900",
       features: ["Free riding", "Unlimited equipments", "Personal trainer", "Weight losing classes", "Month to month", "No time restriction"],
     },
     {
       title: "6 Month unlimited",
-      price: "$59.0",
+      price: "5900",
       features: ["Free riding", "Unlimited equipments", "Personal trainer", "Weight losing classes", "Month to month", "No time restriction"],
     },
   ];
