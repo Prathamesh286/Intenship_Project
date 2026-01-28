@@ -25,29 +25,29 @@ const ContactPage = () => {
   // };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    const response = await fetch('http://localhost:5000/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (response.ok) {
-      setSubmissionMessage(data.message);
-      setFormData({ name: '', email: '', mobile: '', message: '' });
-    } else {
-      setSubmissionMessage(data.message || 'Failed to send message');
+      if (response.ok) {
+        setSubmissionMessage(data.message);
+        setFormData({ name: '', email: '', mobile: '', message: '' });
+      } else {
+        setSubmissionMessage(data.message || 'Failed to send message');
+      }
+    } catch (err) {
+      setSubmissionMessage('Server error. Please try again later.');
     }
-  } catch (err) {
-    setSubmissionMessage('Server error. Please try again later.');
-  }
-};
+  };
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
@@ -63,7 +63,7 @@ const ContactPage = () => {
           </div>
 
         </div>
-        
+
       </section>
 
       {/* Main Contact Section */}
@@ -165,7 +165,7 @@ const ContactPage = () => {
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="bg-red-500 w-full bg-red-600 text-lg font-semibold text-white p-3 rounded-lg hover:bg-red-700 transition duration-300"
+                    className="w-full bg-red-600 text-lg font-semibold text-white p-3 rounded-lg hover:bg-red-700 transition duration-300"
                   >
                     SUBMIT
                   </button>
