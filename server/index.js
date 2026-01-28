@@ -11,6 +11,7 @@ import reviewRouter from './routes/reviews.js';
 import adminRouter from './routes/admin.js';
 import contactRouter from './routes/contact.js';
 import uploadRouter from './routes/upload.js';
+import bookingsRouter from './routes/bookings.js';
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use('/api/reviews', reviewRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/contact', contactRouter);
 app.use('/api/upload', uploadRouter);
+app.use('/api/bookings', bookingsRouter);
 
 // Global error handler (optional but helpful)
 app.use((err, req, res, next) => {

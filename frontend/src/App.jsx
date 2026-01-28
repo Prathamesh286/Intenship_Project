@@ -14,6 +14,11 @@ import BecomeaMember from './pages/BecomeaMember';
 import UserDashboard from './pages/Userdashboard';
 import Membership from './pages/Membership';
 import GymAdminDashboard from './pages/Adminpanel';
+import AdminUsers from './components/AdminComponents/AdminUsers';
+import AdminContact from './components/AdminComponents/AdminContact';
+import AdminSetting from './components/AdminComponents/AdminSetting';
+import AdminBookings from './components/AdminComponents/AdminBookings';
+import AdminOverview from './components/AdminComponents/AdminOverview';
 
 const router = createBrowserRouter(
   [
@@ -29,10 +34,21 @@ const router = createBrowserRouter(
     { path: '/membership', element: <Membership /> },
 
     // Protected routes
-    // { path: '/admin/dashboard', element: <GymAdminDashboard /> },
-    { path: '/admin', element: <GymAdminDashboard /> },
     { path: '/user/dashboard', element: <UserDashboard /> },
-    {path: '/adminpanel', element: <GymAdminDashboard />},
+
+    // Admin routes with nested children
+    {
+      path: '/admin',
+      element: <GymAdminDashboard />,
+      children: [
+        { index: true, element: <AdminOverview /> },
+        { path: 'users', element: <AdminUsers /> },
+        { path: 'bookings', element: <AdminBookings /> },
+        { path: 'contacts', element: <AdminContact /> },
+        { path: 'settings', element: <AdminSetting /> },
+      ]
+    },
+    { path: '/adminpanel', element: <GymAdminDashboard /> },
   ],
   {
     future: {

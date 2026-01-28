@@ -27,7 +27,7 @@ const AdminUsers = () => {
 
     const fetchUsers = async () => {
         try {
-            const { data } = await api.get('/users');
+            const { data } = await api.get('/admin/users');
             setUsers(data);
         } catch (error) {
             showToast('Error fetching users', 'error');
@@ -37,7 +37,7 @@ const AdminUsers = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
             try {
-                await api.delete(`/users/${id}`);
+                await api.delete(`/admin/users/${id}`);
                 setUsers(users.filter(u => u._id !== id));
                 showToast('User deleted successfully', 'success');
             } catch (error) {
@@ -49,10 +49,10 @@ const AdminUsers = () => {
     const handleBanToggle = async (user) => {
         const action = user.isBanned ? 'unban' : 'ban';
         const reason = !user.isBanned ? prompt('Enter ban reason (optional):') : null;
-        
+
         if (user.isBanned || window.confirm(`Are you sure you want to ban ${user.name}?`)) {
             try {
-                await api.put(`/users/${user._id}/${action}`, { reason });
+                await api.put(`/admin/users/${user._id}/${action}`, { reason });
                 await fetchUsers(); // Refresh list
                 showToast(`User ${action}ned successfully`, 'success');
             } catch (error) {
@@ -93,14 +93,10 @@ const AdminUsers = () => {
             if (!userData.password && editMode) delete userData.password; // Don't send empty pass on edit
 
             if (editMode) {
-                // Assuming backend supports PUT /auth/users/:id or similar
-                // If not, we might need a specific admin update route. 
-                // Standard convention: PUT /auth/users/:id or PUT /users/:id
-                // Let's try /auth/users/:id based on fetchUsers path
-                await api.put(`/users/${selectedUser._id}`, userData);
+                await api.put(`/admin/users/${selectedUser._id}`, userData);
                 showToast('User updated successfully', 'success');
             } else {
-                await api.post('/users', userData); // Or admin specific create route
+                await api.post('/admin/users', userData);
                 showToast('User created successfully', 'success');
             }
             fetchUsers();
@@ -230,11 +226,10 @@ const AdminUsers = () => {
                                                 <>
                                                     <button
                                                         onClick={() => handleBanToggle(user)}
-                                                        className={`p-2 rounded-lg transition-all ${
-                                                            user.isBanned 
-                                                                ? 'text-gray-400 hover:text-green-500 hover:bg-green-500/10' 
+                                                        className={`p-2 rounded-lg transition-all ${user.isBanned
+                                                                ? 'text-gray-400 hover:text-green-500 hover:bg-green-500/10'
                                                                 : 'text-gray-400 hover:text-orange-500 hover:bg-orange-500/10'
-                                                        }`}
+                                                            }`}
                                                         title={user.isBanned ? 'Unban User' : 'Ban User'}
                                                     >
                                                         {user.isBanned ? <CheckCircle className="w-5 h-5" /> : <Ban className="w-5 h-5" />}
