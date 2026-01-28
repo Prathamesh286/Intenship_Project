@@ -19,6 +19,7 @@ import AdminContact from './components/AdminComponents/AdminContact';
 import AdminSetting from './components/AdminComponents/AdminSetting';
 import AdminBookings from './components/AdminComponents/AdminBookings';
 import AdminOverview from './components/AdminComponents/AdminOverview';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
 const router = createBrowserRouter(
   [
@@ -34,12 +35,12 @@ const router = createBrowserRouter(
     { path: '/membership', element: <Membership /> },
 
     // Protected routes
-    { path: '/user/dashboard', element: <UserDashboard /> },
+    { path: '/user/dashboard', element: <ProtectedRoute><UserDashboard /></ProtectedRoute> },
 
     // Admin routes with nested children
     {
       path: '/admin',
-      element: <GymAdminDashboard />,
+      element: <ProtectedRoute adminOnly={true}><GymAdminDashboard /></ProtectedRoute>,
       children: [
         { index: true, element: <AdminOverview /> },
         { path: 'users', element: <AdminUsers /> },

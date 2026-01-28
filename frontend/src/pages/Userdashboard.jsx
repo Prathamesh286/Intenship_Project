@@ -1,7 +1,7 @@
 // src/pages/Userdashboard.jsx
 import React, { useEffect, useState } from 'react';
 import UserNavbar from '../components/User/UserNavbar';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../context/AuthContext';
 import { FaUserCircle, FaWhatsapp } from 'react-icons/fa';
 import Footer from '../components/Footer';
 import PersonalInfoForm from '../components/User/PresonalInfo'

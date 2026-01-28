@@ -9,4 +9,4 @@ function Contactpage() {
   )
 }
 
-export default Contact
+export default Contactpage

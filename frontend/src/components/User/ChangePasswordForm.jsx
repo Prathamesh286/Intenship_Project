@@ -1,7 +1,7 @@
 // src/components/ChangePasswordForm.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../context/AuthContext';
 
 const ChangePasswordForm = () => {
   const { token } = useAuth(); // Get JWT token from auth context
@@ -82,12 +82,7 @@ const ChangePasswordForm = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-10 mt-10">
-      <h2 className="text-3xl font-bold text-gray-800 mb-4">Change Password</h2>
-      <p className="text-gray-600 mb-10">
-        Provide your old password, new password and confirm password below
-      </p>
-
+    <div>
       <form onSubmit={handleSubmit} className="space-y-8">
         {/* Server Error */}
         {errors.server && (
@@ -105,67 +100,58 @@ const ChangePasswordForm = () => {
 
         {/* Old Password */}
         <div>
-          <label className="block text-gray-700 font-semibold mb-2">Old Password</label>
+          <label className="block text-white font-semibold mb-2">Old Password</label>
           <div className="relative">
             <input
               type="password"
               name="oldPassword"
               value={formData.oldPassword}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg py-4 px-5 pr-12 focus:outline-none focus:border-red-600 text-lg"
-              placeholder="Password"
+              className="w-full border border-gray-600 bg-black text-white rounded-lg py-4 px-5 pr-12 focus:outline-none focus:border-red-600 text-lg placeholder-gray-500"
+              placeholder="Enter old password"
               required
             />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-              👁️
-            </span>
           </div>
           {errors.oldPassword && (
-            <p className="text-red-600 text-sm mt-1">{errors.oldPassword}</p>
+            <p className="text-red-400 text-sm mt-1">{errors.oldPassword}</p>
           )}
         </div>
 
         {/* New Password */}
         <div>
-          <label className="block text-gray-700 font-semibold mb-2">New Password</label>
+          <label className="block text-white font-semibold mb-2">New Password</label>
           <div className="relative">
             <input
               type="password"
               name="newPassword"
               value={formData.newPassword}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg py-4 px-5 pr-12 focus:outline-none focus:border-red-600 text-lg"
-              placeholder="Password"
+              className="w-full border border-gray-600 bg-black text-white rounded-lg py-4 px-5 pr-12 focus:outline-none focus:border-red-600 text-lg placeholder-gray-500"
+              placeholder="Enter new password"
               required
             />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-              👁️
-            </span>
           </div>
           {errors.newPassword && (
-            <p className="text-red-600 text-sm mt-1">{errors.newPassword}</p>
+            <p className="text-red-400 text-sm mt-1">{errors.newPassword}</p>
           )}
         </div>
 
         {/* Confirm Password */}
         <div>
-          <label className="block text-gray-700 font-semibold mb-2">Confirm Password</label>
+          <label className="block text-white font-semibold mb-2">Confirm Password</label>
           <div className="relative">
             <input
               type="password"
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg py-4 px-5 pr-12 focus:outline-none focus:border-red-600 text-lg"
-              placeholder="Password"
+              className="w-full border border-gray-600 bg-black text-white rounded-lg py-4 px-5 pr-12 focus:outline-none focus:border-red-600 text-lg placeholder-gray-500"
+              placeholder="Confirm new password"
               required
             />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
-              👁️
-            </span>
           </div>
           {errors.confirmPassword && (
-            <p className="text-red-600 text-sm mt-1">{errors.confirmPassword}</p>
+            <p className="text-red-400 text-sm mt-1">{errors.confirmPassword}</p>
           )}
         </div>
 

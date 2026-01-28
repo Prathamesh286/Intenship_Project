@@ -92,4 +92,31 @@ router.post('/change-password', protect, async (req, res) => {
   }
 });
 
+// Update user profile
+router.put('/profile', protect, async (req, res) => {
+  try {
+    const { firstName, lastName, gender, dateOfBirth, country, height, weight } = req.body;
+
+    const updateData = {
+      name: `${firstName} ${lastName}`.trim(),
+    };
+
+    // Store additional profile data (you may want to extend User model for these fields)
+    // For now, we'll just update the name
+    const user = await User.findByIdAndUpdate(
+      req.user.id,
+      updateData,
+      { new: true, runValidators: true }
+    ).select('-password');
+
+    res.json({
+      message: 'Profile updated successfully',
+      user
+    });
+  } catch (err) {
+    console.error('Profile update error:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 export default router;
